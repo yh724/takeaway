@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yh.takeawaysystem.dao.UserMapper">
+
+    <insert id="insertUser">
+        insert into t_user(username, nickname, sex, password, phone, email, create_time)
+        values (#{username}, #{nickname}, #{sex}, #{password}, #{phone}, #{email}, #{createTime})
+    </insert>
+
+    <select id="selectUserByUsername" resultType="integer">
+        SELECT count(*)
+        FROM t_user
+        where username = #{username}
+    </select>
+
+    <select id="selectUser" resultType="com.yh.takeawaysystem.entity.User">
+        SELECT *
+        FROM t_user
+        where username = #{username}
+          and password = #{password}
+    </select>
+</mapper>
